@@ -8,4 +8,4 @@ P3: triangle rasterization, Z-buffer & shading
 P4: GPU programming  
 P5: loop subdivision with shading  
 
-*This repository is to showcase my work in this course and is solely for archival/portfolio purposes.* 
+*This repository is to showcase my work in this course and is solely for archival/portfolio purposes. I cannot guarantee all projects are 100% correct.* 
