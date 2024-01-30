@@ -1,0 +1,36 @@
+Project Description
+Similar to Project 1A and 1B, you are going to create your own versions of commands that mimic OpenGL commands.  In particular, you will implement the commands Begin_Shape(), Vertex(), and End_Shape(), which will perform triangle rasterization.  You will also implement the Set_Color() command, which allows you to specify either per-triangle or per-vertex color.  Also similar to Project 1A and 1B, you will test your code using test routines that are invoked by pressing keys 1 through 8.  Each such keypress will call a test routine that in turn will draw a triangle using your code.
+
+Here are the functions of the routines that you will write:
+
+Begin_Shape() - Specify that a new triangle is being defined.  It may be that this code does very little, such as setting a vertex counter to zero or initializing a vertex list.
+
+Vertex (x, y, z) - This command specifies the (x, y, z) coordinates of a triangle.  Users of your code will always call this routine exactly three times between a Begin_Shape() and an End_Shape() command.  The code we use to test your commands will always perform exactly three calls to Vertex() between Begin_Shape() and End_Shape(), so you don't need to check for too few or too many vertices.
+
+End_Shape() - Indicates that all the vertices of a triangle have been give, and that the triangle should be rasterized.  This is where the bulk of your code is likely to be.
+
+Set_Color (r, g, b) - Specifies the current color for triangle vertices.  Any vertices that are specified using the Vertex() command will be given the color that was last specified by a Set_Color() command.  The red, green and blue values in this command should be floating point values in the range of 0 to 1.
+
+During triangle rasterization, you will need to set one pixel at a time on the screen as you fill a triangle.  There are two easy ways to accomplish this in Processing.  One way is to use the command set (x, y, color).  The other way is to draw a one-pixel rectangle using rect (x, y, 1, 1).  Either way is fine, but note they require different approaches to specify color.  If you are using rect(), you will want to first use the fill (r,, g, b) command to specify the pixel's color.
+
+As you know, Processing uses (0,0) to refer to the upper left corner of the window.  For this assignment, we are going to treat the lower left corner as (0,0).  This means you will need to flip the y-values of your pixel coordinates before you set the color of a pixel.
+
+Even though the Vertex() command accepts 3D coordinates, we will only be using the x and y coordinates for Part A of this assignment.  Ignore the z values for now.  When two triangles are drawn so that they overlap, the triangle that was drawn last should be entirely visible, and parts of the earlier triangle should be overwritten.  In Part B (not yet!), we will use the z values of each pixel to determine which triangle portions should be visible using the z-buffer algorithm.
+
+Suggested Approach
+We recommend that at first you concentrate only on the first example triangle that is invoked by pressing the "1" key.  Note that this triangle has one of its edges parallel to the x-axis, so that there is no need to switch between edges as you rasterize this triangle.  Begin by defining a triangle edge data structure.  Create such an edge by specifying a lower and upper vertex of the edge, and the calculate the first x intersection point and the value dx that shifts this intersection point the appropriate amount for each subsequent scanline, as the integer scanline position y is incremented by 1.  You may also find it useful to add a ymax value to an edge that specifies the largest vertical (y) position on the edge.
+
+Once you can create the information for triangle edges, create two such edges for a given triangle, one for the left edge and one for the right.  Then write the main loop that goes from the minimum to maximum integer y-values for the given triangle.  At each scanline, use another loop in the x direction to fill in the pixels between the left and right x intersection points.  Then add the left and right dx values to the left and right x values.  This can be the last part of your main rasterization loop.  Such code should be sufficient to rasterize the first and second test examples.
+
+Once your rasterization works properly for key press "1" and "2", move on to key press "3".  For this example, your rasterization main loop has to be able to switch to the third edge of a triangle when the lowest of the two edges runs out.  This is where it may be useful to have a per-edge ymax value.
+
+Once you can handle switching edges, you should consider tackling key press "5", which creates a triangle with a flat base.  This case may be tricky because there are two vertices with the same minimum y-value.  You will probably have to check specially for this case, and skip over the lower edge of the triangle.
+
+Case "6" draws four triangles at different orientations.  You may find yourself bug hunting to handle all four cases.  The same is true for case "7" which draws many thin triangle wedges.
+
+Finally, you should turn your attention to being able to handle vertices of different colors.  Key press "8" and "9" give examples where each vertex of a triangle has been given a different color.  Just like x-values, you can define an initial value for each of red, green, and blue along an edge.  This initial color will be based on the color of the lower vertex of the edge.  You can also define a dr, dg, and db value that indicate how much to change red, green and blue each time you move up one scanline.  These values dr, dg, and db are very similar to the dx value that you use to update the x intersection value for an edge.  You should consider tracking the red, green and blue values per edge, and also associate dr, dg, and db with each edge.
+
+The final item you should check is that there are no missing pixels between triangles that are adjacent to each other.  Look closely in case "7".  In the resulting figure, there are many adjacent triangles, that is, triangles that share pairs of vertices.  You should look carefully to see whether there are any background pixels that are accidentally leaking through between such adjacent triangles.  It may be helpful to use a magnifying tool such as the Digital Color Meter on the Mac to magnify your triangle's pixels.  Note that there will be point deductions for cases where there are cracks between adjacent triangles.
+
+The Barycentric Approach is Not Allowed
+The code that you write to perform triangle rasterization must implement the scanline approach to triangle rasterization. Despite the fact that our textbook describes the barycentric approach to performing triangle rasterization, you should NOT use this method in your code.  Using the barycentric approach will result in a large loss of points for the assignment.  Your code must visit the scanlines one at a time and fill pixels across a row.  Moreover, you must use an incremental algorithm for determining which pixels are inside the triangle by tracking the current left and right intersections between the scanline and the edges.  Also part of this approach is to update the intersection position using the value dx for each edge.
