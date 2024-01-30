@@ -1,0 +1,109 @@
+Project Description
+In order to familiarize you with matrix transformations and operations, you will be completing the empty methods that are modeled on the corresponding commands from OpenGL. Your versions will use slightly different names to distinguish them from the built-in routines. You will write code to do the following:
+
+1. Write the code for Init_Matrix() that initializes the matrix stack. After this command is called, the only matrix on the stack should be the 4x4 identity matrix.  Note that the transformations we create will be for manipulating objects in 3D, hence the need for 4x4 matrices.
+
+2. Print the current transformation matrix (the top of the stack) to the Processing console. Make sure your matrix prints on four separate rows. For output that is easier to read, have this command print an empty line after the last row.  The command for this is Print_CTM().
+
+Example:
+
+1 0 0 0
+0 1 0 0
+0 0 1 0
+0 0 0 1
+
+3. Create your own routine that performs 4x4 matrix multiplication, to be used in the next step.
+
+4. Create 4x4 scale, translate, and simple rotation matrices, and multiply the matrix on the top of the stack with this newly-created matrix. The names of the commands that you will implement are Scale, Translate, RotateX, RotateY, RotateZ. For instance, Scale (x, y, z) will create a new scale_matrix, and then change to the top of the matrix stack in this way: new_ctm = old_ctm * scale_matrix.  Note that the three Rotate commands each take a single floating point angle in degrees, so you will have to convert these values to radians before you invoke sin() and cos(), which use radians.  Each rotate command should create a rotation matrix that rotates a given 3D point counter-clockwise around the appropriate axis (X, Y, or Z).
+
+5. Implement Push_Matrix and Pop_Matrix. The Push_Matrix command duplicates the current transformation matrix and places this copy on the top of the matrix stack. The Pop_Matrix command pops the current transformation matrix off the top of the stack. If there is just one matrix on the stack, calling Pop_Matrix should print an error message.
+
+Carrying Out the Assignment
+The provided source code gives you empty functions for each of the operations listed above. The provided code also tests these matrix commands, calling various commands and then printing the current transformation matrix to show the result. These tests are in the routine mat_test(). See below for sample output from this test.
+
+You should modify the provided source code to satisfy the project requirements.  You should also comment your code and include your name in the header. The source code is written in the Java version of Processing. Visit “processing.org/reference/” for more information on built-in functions and data structures. 
+
+Write Your Own Matrix and Stack Routines
+Please note that you are not allowed to use built-in graphics functions to accomplish the tasks listed in the project description. In particular, you cannot use the built-in matrix and vector data types, the transformation functions (scale, translate, rotate) and the push and pop functions that are provided by Processing. You also cannot use the built-in matrix multiplication routine. You should create your own matrix data type.  You should not import any external libraries for this assignment (e.g. for matrices or stacks).  You may be tempted to use external libraries that you are familiar with, such as numpy or pandas, but you should not!  The functionality of generic Java arrays and lists should be enough to allow you to create your own matrices and a matrix stack. It is fine for you to use any of the built-in math functions such as cos(), sin(), sqrt(), pow() and so on.  When in doubt about what Processing routines you may use, ask.
+
+Results from mat_test()
+Below are the results that your code should produce when the test routine is run.  Keep in mind that your values and these might differ very sightly due to numerical precision issues, and this is fine.  In particular, some of the rotation results may produce numbers that are very small but not quite zero.
+
+Initialize Matrix
+1.0 0.0 0.0 0.0 
+0.0 1.0 0.0 0.0 
+0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 1.0 
+
+Test Stack Underflow
+Error: cannot pop the matrix stack
+
+Translate
+1.0 0.0 0.0 3.0 
+0.0 1.0 0.0 2.0 
+0.0 0.0 1.0 1.5 
+0.0 0.0 0.0 1.0 
+
+Translate and Matrix Stack
+1.0 0.0 0.0 1.0 
+0.0 1.0 0.0 1.5 
+0.0 0.0 1.0 -2.0 
+0.0 0.0 0.0 1.0 
+
+1.0 0.0 0.0 -1.0 
+0.0 1.0 0.0 4.0 
+0.0 0.0 1.0 -2.0 
+0.0 0.0 0.0 1.0 
+
+Scale
+2.0 0.0 0.0 0.0 
+0.0 3.0 0.0 0.0 
+0.0 0.0 4.0 0.0 
+0.0 0.0 0.0 1.0 
+
+Rotate X
+1.0 0.0 0.0 0.0 
+0.0 -4.371139E-8 -1.0 0.0 
+0.0 1.0 -4.371139E-8 0.0 
+0.0 0.0 0.0 1.0 
+
+Rotate Y
+0.9659258 0.0 -0.25881904 0.0 
+0.0 1.0 0.0 0.0 
+0.25881904 0.0 0.9659258 0.0 
+0.0 0.0 0.0 1.0 
+
+Rotate Z and Matrix Stack
+0.70710677 -0.70710677 0.0 0.0 
+0.70710677 0.70710677 0.0 0.0 
+0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 1.0 
+
+1.0 0.0 0.0 0.0 
+0.0 1.0 0.0 0.0 
+0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 1.0 
+
+Rotate and Translate
+-4.371139E-8 -1.0 0.0 -5.0000005 
+1.0 -4.371139E-8 0.0 7.0 
+0.0 0.0 1.0 3.0 
+0.0 0.0 0.0 1.0 
+
+Translate and Rotate
+-4.371139E-8 -1.0 0.0 7.0 
+1.0 -4.371139E-8 0.0 5.0 
+0.0 0.0 1.0 3.0 
+0.0 0.0 0.0 1.0 
+
+Translate and Scale
+2.0 0.0 0.0 1.5 
+0.0 2.0 0.0 2.5 
+0.0 0.0 2.0 3.5 
+0.0 0.0 0.0 1.0 
+
+Scale and Translate
+4.0 0.0 0.0 8.0 
+0.0 2.0 0.0 -4.0 
+0.0 0.0 0.5 5.0 
+0.0 0.0 0.0 1.0 
