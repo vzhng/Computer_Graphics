@@ -1,7 +1,12 @@
-Project Description
-The provided code draws a single square on the screen.  This square can be rotated by clicking and dragging the mouse in the window.  The provided code also reads a mesh from a file and prints this information on the screen.
+P5: Loop Subdivision with shading
 
-Your finished program will be able to read a mesh from a file and display that mesh. More importantly, with a keystroke your program will create a Loop subdivided version of the mesh, replacing the old mesh in memory. Your program should also show corners adjacency information by visualizing a current corner as a small sphere. Your program will respond to the following keystroke commands:
+PROJECT DESCRIPTION
+The provided code draws a single square on the screen. This square can be rotated by clicking and dragging the mouse in the window.
+The provided code also reads a mesh from a file and prints this information on the screen.
+
+Your finished program will be able to read a mesh from a file and display that mesh. More importantly, with a keystroke your program 
+will create a Loop subdivided version of the mesh, replacing the old mesh in memory. Your program should also show corners adjacency 
+information by visualizing a current corner as a small sphere. Your program will respond to the following keystroke commands:
 
 1-5: Read in a mesh file (tetrahedron, octahedron, icosahedron, star, torus).
 
@@ -19,12 +24,23 @@ o: Change the current corner using the "opposite" operator.
 
 s: Change the current corner using the "swing" operator.
 
-The subdivision that you will implement is Loop subdivision, which is designed for triangle meshes.  Each time you subdivide the mesh, you will create a new vertex per edge.  Both the position of these new vertices and updated positions of the old vertices should be calculated by the Loop subdivision rules.  For each original triangle, you will use its three original vertices together with the three new edge-associated vertices as the vertices of four new triangles that replace the original triangle.
+The subdivision that you will implement is Loop subdivision, which is designed for triangle meshes.  Each time you subdivide the mesh, 
+you will create a new vertex per edge.  Both the position of these new vertices and updated positions of the old vertices should be 
+calculated by the Loop subdivision rules.  For each original triangle, you will use its three original vertices together with the three 
+new edge-associated vertices as the vertices of four new triangles that replace the original triangle.
 
-A large part of this project is being able to perform triangle subdivision of the surface at least three times, so make sure your program can do this.
+A large part of this project is being able to perform triangle subdivision of the surface at least three times, so make sure your program 
+can do this.
 
-You should initialize the "current corner" to be zero.  Various keys will change the current vertex to be other corners, through the next, previous, opposite and swing operators.  Be sure that the sphere that represents the current corner is clearly at the corner of a particular triangle.  It is not sufficient to draw a sphere at a vertex, since this doesn't show which triangle the corner belongs to.  Remember that the swing operator (key press "s") should move the current corner around a vertex, and that this motion should be visible as you travel between corners.
+You should initialize the "current corner" to be zero. Various keys will change the current vertex to be other corners, through the next,
+previous, opposite and swing operators. Be sure that the sphere that represents the current corner is clearly at the corner of a 
+particular triangle.  It is not sufficient to draw a sphere at a vertex, since this doesn't show which triangle the corner belongs to.
+Remember that the swing operator (key press "s") should move the current corner around a vertex, and that this motion should be visible 
+as you travel between corners.
 
-Your program should be able to display a given mesh using either flat or Gouraud shading, controlled by the keys "f" and "g". When you are displaying the mesh using flat shading, you must show the polygon edges in black.  Note that for Gouraud shading you will have to calculate and use per-vertex surface normals.
+Your program should be able to display a given mesh using either flat or Gouraud shading, controlled by the keys "f" and "g". When you 
+are displaying the mesh using flat shading, you must show the polygon edges in black.  Note that for Gouraud shading you will have to 
+calculate and use per-vertex surface normals.
 
-Please make sure your project retains the ability to rotate the current mesh by clicking and dragging with the mouse, as demonstrated in the provided code.
+Please make sure your project retains the ability to rotate the current mesh by clicking and dragging with the mouse, as demonstrated 
+in the provided code.

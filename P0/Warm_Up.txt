@@ -1,37 +1,48 @@
-The purpose of this project is to calibrate you with regard to the difficulty of the programming assignments of this course.  You should start on this project before Friday!  In addition, this project will familiarize you with the Java version of the Processing programming environment, which we will use for all of our class projects.  This project is due on Wednesday, August 30 at 11:59pm.  Each day late after Wednesday will cause your grade on the project to drop by 5%, and we will not accept the project if it is more than three days beyond the due date.
+WARM-UP P0: Infinite Pentagon Looping
 
-Project Description
-You will create an interactive program that will draw a specific pattern of pentagons (five-sided polygons) next to other pentagons.  First, start by creating a drawing window that is square 800x800 pixels in size.  You should then draw one large pentagon that has its center positioned in the exact middle of the drawing window.  This should be a regular pentagon (all sides equal length, all angles equal).  One of the vertices of this pentagon should point directly upward.  Let us refer to the distance from the center to a vertex of a pentagon as its radius.  The radius of this first pentagon should be 1/4 the width of the drawing window.  Use the commands beginShape(), vertex(), and endShape(CLOSE) to draw the pentagon.
+PROJECT DESCRIPTION
+Create an interactive program that will draw a specific pattern of pentagons (five-sided polygons) next to other pentagons.  
 
-You will then draw five smaller pentagons, each that has a radius that is smaller than that of the middle pentagon.  To start with, make this smaller pentagon's radius half the radius of the middle pentagon.  (Eventually we will change this.)  Each of these smaller pentagons will have its position offset from the middle pentagon in a different direction.  Taken together, the middle pentagon and the five smaller satellite pentagons will create a pattern that is rotationally symmetric.  At first, place each of the smaller pentagons so that their centers are offset from the middle pentagon by 1.5 times the radius of the middle pentagon.  (Eventually we will change this, too.)
+Draw one large pentagon that has its center positioned in the exact middle of the drawing window. This should be a regular pentagon
+(all sides equal length, all angles equal). One of the vertices of this pentagon should point directly upward. Let us refer to the 
+distance from the center to a vertex of a pentagon as its radius. The radius of this first pentagon should be 1/4 the width of the
+drawing window.
 
-Pay close attention to the rotation of the pentagons in the example images below.  Note that closest edge of each smaller pentagon to the middle of the window is parallel to the closest edge of the middle pentagon.  This orientation of the smaller pentagons is an essential part of the pattern you are to create.
+Then draw five smaller pentagons, each that has a radius that is smaller than that of the middle pentagon. To start with, make this 
+smaller pentagon's radius half the radius of the middle pentagon. Each of these smaller pentagons will have its position offset from 
+the middle pentagon in a different direction. Taken together, the middle pentagon and the five smaller satellite pentagons will create
+a pattern that is rotationally symmetric. At first, place each of the smaller pentagons so that their centers are offset from the 
+middle pentagon by 1.5 times the radius of the middle pentagon.
 
-The radius of the smaller pentagons should be controlled by the vertical position of the mouse cursor.  Every time you move the cursor, the pattern should be re-drawn according to the new cursor position.  The radius of the smaller pentagons should be a "shrink factor" times the middle pentagon's radius.  When the cursor is at the bottom of the screen, this shrink factor should be zero, and thus the smaller pentagons will be just a dot.  The shrink factor should change linearly, based on the distance from the cursor to the bottom of the window.  The maximum value of the shrink factor should be 1/2, and this value will be attained when the cursor is at the top of the window.
+Pay close attention to the rotation of the pentagons. Note that closest edge of each smaller pentagon to the middle of the window is 
+parallel to the closest edge of the middle pentagon. This orientation of the smaller pentagons is an essential part of the pattern 
+you are to create.
 
-The distance of the smaller pentagons from the middle one should be controlled by the cursor’s horizontal position.  Let us call the radius of the middle pentagon r.  When the cursor is at the left of the screen, the center of the smaller pentagons should offset from the middle pentagon's center by a distance d = r.  As the cursor moves towards the left, the value of d will be increased based on the cursor's horizontal position.  The offset distance d = r * (1 + shift), where shift will be in the range of [0, 1].  The value of shift should be based linearly on the distance of the cursor from the left side of the window.  When the cursor is at the middle of the screen, shift = 1/2, so d = r * (1 + shift) = r * 1.5.  When the cursor is on the far right of the window, shift = 1, and the offset d = r * 2.
+The radius of the smaller pentagons should be controlled by the vertical position of the mouse cursor. Every time you move the cursor,
+the pattern should be re-drawn according to the new cursor position. The radius of the smaller pentagons should be a "shrink factor" 
+times the middle pentagon's radius. When the cursor is at the bottom of the screen, this shrink factor should be zero, and thus the 
+smaller pentagons will be just a dot. The shrink factor should change linearly, based on the distance from the cursor to the bottom 
+of the window. The maximum value of the shrink factor should be 1/2, and this value will be attained when the cursor is at the top 
+of the window.
 
-Each of the smaller pentagons should in turn have four even smaller pentagons that are satellite pentagons to each of them.  In total, there will be 25 of these smaller pentagons.  Each smaller pentagon should have a radius that is shrink times the radius of its “parent” pentagon.  The offset (d) of these satellite pentagons from the center of their parent polygon should be d = rad_parent * (1 + shift), where shift is defined as above.  This pattern of smaller pentagons will repeat several more times, and each time the sizes of the pentagons will be smaller.  The next level of pentagons will have 125 pentagons, then 625, and so on.
+The distance of the smaller pentagons from the middle one should be controlled by the cursor’s horizontal position. Let us call the 
+radius of the middle pentagon r. When the cursor is at the left of the screen, the center of the smaller pentagons should offset from 
+the middle pentagon's center by a distance d = r. As the cursor moves towards the left, the value of d will be increased based on the 
+cursor's horizontal position. The offset distance d = r * (1 + shift), where shift will be in the range of [0, 1]. The value of shift 
+should be based linearly on the distance of the cursor from the left side of the window. When the cursor is at the middle of the screen,
+shift = 1/2, so d = r * (1 + shift) = r * 1.5. When the cursor is on the far right of the window, shift = 1, and the offset d = r * 2.
 
-Your pattern should have at least five different sizes of pentagons, from the largest to the smallest.  Even though you will be drawing many, many pentagons, your code should include very few lines that use the beginShape(), vertex(), and endShape() functions to draw those pentagons.  If you find yourself using many such drawing calls, you are probably not approaching the problem correctly.
+Each of the smaller pentagons should in turn have four even smaller pentagons that are satellite pentagons to each of them. In total,
+there will be 25 of these smaller pentagons. Each smaller pentagon should have a radius that is shrink times the radius of its “parent”
+pentagon.  The offset (d) of these satellite pentagons from the center of their parent polygon should be d = rad_parent * (1 + shift), 
+where shift is defined as above. This pattern of smaller pentagons will repeat several more times, and each time the sizes of the 
+pentagons will be smaller. The next level of pentagons will have 125 pentagons, then 625, and so on.
 
-You will find the sin() and cos() functions to be useful for carrying out this assignment.  Note that Java / Processing expect radians (not degrees) for specifying angles.  Processing has a built-in PI constant.  The angle between adjacent vertices of a regular pentagon (with respect to the pentagon center) is 2 * PI / 5.
+Your pattern should have at least five different sizes of pentagons, from the largest to the smallest. Even though you will be drawing 
+many, many pentagons, your code should include very few lines that use the beginShape(), vertex(), and endShape() functions to draw 
+those pentagons.  If you find yourself using many such drawing calls, you are probably not approaching the problem correctly.
 
-Project Restrictions
-For this first warm-up project, you may not use some of the built-in capabilities of Processing.  In particular, you must not use translate, scale, rotate, or any of the other built-in transformations.  You also cannot use the matrix commands, such as push and pop.  (We will use many of these tools in later projects, just not in this one.)  It is fine for you to use basic mathematics tools such as addition, multiplication, cosine and sine.  You are also expected to make use of the beginShape(), vertex(), and endShape() commands to draw the pentagons. If you are uncertain about what is allowed, check with the instructor.
-
-Additional Requirements
-To add more variety to the images that you draw, add some kind of color variation to your pentagons.  You may choose colors based on the positions of the pentagons, based on how “deep” they are in the pattern, or based on almost any other scheme of your own choosing.  However, do not cause the colors of the pentagons to flicker randomly each time they are drawn.
-
-Your pattern drawing program must be written in the Java version of Processing.  The Processing web site is here:  http://processing.org.  This web site includes downloadable versions of Processing for Windows, OS X, and Linux machines.  This web site has extensive documentation and examples.  Processing will have all of the familiar Java language constructs.
-
-Authorship Rules
-Each student must work on this assignment on their own.  You may not use code that anyone other than yourself has written.  The only exception to this is that you may use the example processing code that was provided by the instructor.  Code that is explicitly not allowed includes code taken from the Web, from AI tools such as ChatGPT or copilot, from books, from github, from other students, or from any other source other than yourself.  If you are unable to complete this assignment on your own, you probably do not have the programming skills needed to successfully complete CS 3451.
-
-Project Submission
-In order to run a source code file in Processing, the code must be in a folder named after the main file. When submitting any assignment, leave it in this folder, zip it and submit via Canvas.  Please do not use tar or rar to turn in your files.
-
-Examples
-Below are some examples of the patterns that your program should be able to create.  The position of the mouse cursor is indicated by a small red circle in these images.  The first six images just show the middle pentagon and its five satellite pentagons.  The last few images show the pattern when there are five levels of pentagons.
-
-Keep in mind that your own program should add some color variation to the pentagons.
+You will find the sin() and cos() functions to be useful for carrying out this assignment.
+Note that Java / Processing expect radians (not degrees) for specifying angles. 
+Processing has a built-in PI constant. 
+The angle between adjacent vertices of a regular pentagon (with respect to the pentagon center) is 2 * PI / 5.
