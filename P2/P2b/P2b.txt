@@ -1,0 +1,34 @@
+Project Description
+Now that you have created an object for Project 2A, you should have some ideas of how you wish to incorporate it into a fully animated scene. The most interesting animated scenes, no matter how short, seek to tell a story. Introduce your character, have your character carry out one or more actions, and then resolve the scene.
+
+You will most likely want to create more objects to populate your scene, but these new objects can be more simple than Project 2A’s object. Your main goal for this assignment will be to make one or more of the objects in the scene move, and to also move the virtual camera through the scene. You will probably want to use a “time” variable to help control motion of your objects.
+
+Below is a checklist of elements that you must include in your scene:
+
+Camera Motion
+
+You should move the camera smoothly through the scene, rather than keeping it in one place. Use the built-in routine "camera()" from Processing set your camera position.  Change the camera's position by varying the parameters for the eye position.  Just rotating the entire scene does not count as moving the camera.
+
+Please note that having the user press keys or move the mouse to control the camera does not count towards automatic motion of the camera. If you want to include user controls, have an automatic motion of the camera in the first part of the scene, before handing over controls to the user.
+
+Include Project 2A Object
+
+You must incorporate Project 2A’s object somewhere in your scene.
+
+Object Animation
+
+Include at least two object motions in the scene (distinct from the camera motion). One of these motions should include translation, and another, different motion should include rotation. If you wish, these two different motions can be for two different parts of the same object, or they can be motions of different objects. Make sure it is clear that these objects are moving, and not just changing their apparent positions due to camera motion.
+
+Object Instancing
+
+At least one of the objects that you create should be replicated using instancing so that multiple copies of it appears in more than one location at the same time. You must not use duplicate lines of code to achieve this, but rather you must use the matrix stack and procedural encapsulation to accomplish this. The object that you instance should be composed of several sub-parts. For example, just placing a sphere in several places doesn't count as instancing. Place a comment at the very start of your program that explicitly states which object you are replicating using instancing. You do not need to use Project 2A’s object as the object that you instance – you can instance any object that you want. You should instance a whole object; saying that the left and right arm two instances of an arm will not count.  Misunderstandings about the instancing requirement is probably the most common point deduction for this project.
+
+Lighting and Shading
+
+You must include at least one light source in your scene. Surfaces in the scene should be illuminated by the light source. Do not use only ambient light.
+
+Duration
+
+Your animation should run for 10 seconds or more on your computer. Please create an animation that finishes in a reasonable amount of time on your computer, say less than two minutes.
+
+If you find that your animation runs slowly, it is most likely that this is due to use of many polygons in the scene. By far, the most common reason for having many polygons in this assignment is the use of lots of spheres. If you want to use many spheres, consider calling the sphereDetail() command that specifies how many polygons a sphere uses.

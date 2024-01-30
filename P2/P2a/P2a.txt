@@ -1,0 +1,47 @@
+Project Description
+Decide on an object that you want to include in your final animation. You should select the main character, or “protagonist” object from your planned animation to use in this week’s assignment. Keep in mind that a main character does not need to be a human or animal character, but can be almost anything that you can build a story around (e.g. musical instrument, telephone, house, car, or vacuum cleaner).  In part B of this project, you will concentrate on making things move in your final short animation.
+
+Do not use a snowman, panda, penguin or the green android character (the mascot for the mobile OS) as your main character -- if you do, this will be an automatic 20 point deduction.  We saw too many of these as characters in previous projects!
+
+The key aspect of this assignment is that the 3D object that you create should be made up of multiple pieces. You will use the matrix stack and the transformations (rotate, scale, translate) to put together the parts to form the final object.
+
+Here are the required elements for your main character:
+
+Your object should be something recognizable, and not some abstract or random shape.
+
+Use at least twelve different sub-parts to make your object (e.g. six spheres and six cylinders).
+
+Include at least two different kinds of parts in your object (e.g. sphere and block).
+
+Most or all of the sub-parts of your object should be touching or overlapping each other.
+
+Use at least two different colors in your object.
+
+You must use pushes and pops, and they should be balanced (same number of each).
+
+Make use of all three basic transformations to assemble your object (rotate, scale, translate).
+
+Slowly rotate your object to show it from different sides.
+
+Do not make snowman, penguin, panda or the green android (the mobile platform mascot).
+Include a screen shot of your object that is square and has a white background (see below).
+
+When your Processing code is run, it should display your object, and slowly rotate it to show what the object looks like from different sides. This rotation of the whole object does not count towards your use of rotate to assemble the object.
+
+Effort is Part of the Grade
+This assignment will be graded partially based on our assessment of the amount of care, effort, and creativity that you put into creating your object. If you choose a simple object and throw it together, you will not get a high score on the “effort” component of this project.  18% of the project will be based on our assessment of your effort.
+
+Optional Elements
+If you wish to, you may add textures to your object. It is not necessary to add textures in order to have a successful object for this project.
+
+You may decide that the routines for blocks, spheres, and cylinders are not sufficient for making your object. You should feel free to create collections of polygons using the commands beginShape(), vertex(), and endShape(). If you create a sub-part with polygon code of your own, this can count as one of the kinds of parts in your object.
+
+Feel free to make use of various programming techniques to assemble your object. If some of the sub-parts of an object are regularly spaced, using a loop to create and position these parts is entirely appropriate. You may find that your object’s parts really ought to be made of even smaller parts. If so, great! It is fine for the sub-parts to have sub-sub-parts.
+
+Not Allowed
+The object that you turn in for this project should not be an object that was created using a modeling or animation package such as Blender or Maya.  For this assignment, you are not allowed to read an object from a file.
+
+Turn In a Screen Shot
+Please include a JPG image of your object as part of the files that you turn in.  To make this easy, the sample code will save such an image file of your window when you press the "s" key.  Please keep your image square in shape and with a white background.  Try to position your object so that it is fairly large in the window when you take the screen shot.
+
+Give the image file your name (e.g. greg_turk.jpg).  2 out of 100 points for this project will be for you including this screen shot of your object. 
